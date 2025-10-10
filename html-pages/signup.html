@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../src/output.css">
+  </head>
+  <body class="bg-[#E9F1EF] flex items-center justify-center min-h-screen p-4">
+    <div
+      class="bg-white w-full max-w-md rounded-xl shadow-lg border border-gray-200 p-8"
+    >
+      <!-- Header -->
+      <div class="flex items-center gap-2 mb-6">
+        <div class="bg-[#004746] p-2 rounded-md">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="white"
+            class="w-5 h-5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M5.25 5.25v13.5h13.5V5.25H5.25z"
+            />
+          </svg>
+        </div>
+        <h1 class="text-lg font-semibold text-gray-800">Bookmark Manager</h1>
+      </div>
+
+      <!-- Title -->
+      <h2 class="text-2xl font-bold mb-2">Create your account</h2>
+      
+
+      <!-- Form -->
+      <form id="signupForm" class="space-y-4">
+        <div>
+          <label class="block font-medium mb-1"
+            >Full name</label
+          >
+          <input
+            id="fullname"
+            type="text"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1"
+            >Email address </label
+          >
+          <input
+            id="email"
+            type="email"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+        </div>
+
+        <div>
+          <label class="block font-medium mb-1"
+            >Password</label
+          >
+          <input
+            id="password"
+            type="password"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-600"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-[#004746] hover:bg-emerald-800 text-white font-semibold py-2 rounded-md transition-colors"
+        >
+          Create account
+        </button>
+      </form>
+
+      <p class="text-center text-gray-600 mt-6 text-sm">
+        Already have an account?
+        <a href="login.html" class="text-emerald-700 font-medium hover:underline"
+          >Log in</a
+        >
+      </p>
+    </div>
+  </body>
+  <script src="signup.js"></script>
+</html>
