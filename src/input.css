@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+  --color-baseGreen-100:#B1B9B9;
+  --color-baseGreen-300:#00706E;
+  --color-baseGreen-400:#004746;
+  --color-baseGreen-500:#004241;
+  --color-baseGreen-600:#002E2D;
+  --color-baseGreen-800:#001F1F;
+  --color-baseGreen-900:#001414;
+  --color-neutrallight-300:#DDE9E7;
+  --color-neutrallight-100:#E8F0EF;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));

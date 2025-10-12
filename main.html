@@ -1,11 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    hello
-</body>
+    <link rel="stylesheet" href="./src/output.css" />
+    <script
+      src="https://kit.fontawesome.com/64aecb3346.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="fullcontainer flex bg-neutrallight-100">
+      <!-- Sidebar -->
+      <aside
+        class="w-84 min-h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 p-4"
+      >
+        <!-- Header -->
+        <div class="flex items-center gap-2 mb-6">
+          <div class="bg-baseGreen-500 text-white rounded-lg p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 3v18l7-5 7 5V3z"
+              />
+            </svg>
+          </div>
+          <h1 class="font-semibold text-lg">Bookmark Manager</h1>
+        </div>
+
+        <!-- Menu -->
+        <nav class="space-y-1">
+          <a
+            href="#"
+            class="flex items-center gap-2 px-3 py-2 rounded-md bg-gray-100 dark:bg-gray-700 font-medium"
+          >
+            <i class="fa-solid fa-house"></i>
+
+            Home
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 text-gray-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7V4a1 1 0 011-1h4a1 1 0 011 1v3"
+              />
+            </svg>
+            Archived
+          </a>
+        </nav>
+
+        <!-- Tags -->
+        <div class="mt-6">
+          <h2
+            class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2"
+          >
+            Tags
+          </h2>
+          <ul class="space-y-1">
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>AI</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >1</span
+              >
+            </li>
+
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>Community</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >5</span
+              >
+            </li>
+
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>Design</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>Framework</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>Git</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>HTML</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>Javascript</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+            <li
+              class="flex justify-between items-center px-2 py-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              <div class="flex items-center gap-2">
+                <input type="checkbox" class="accent-emerald-600" />
+                <span>CSS</span>
+              </div>
+              <span
+                class="text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full px-2 py-0.5"
+                >6</span
+              >
+            </li>
+
+            <!-- Add more tags as needed -->
+          </ul>
+        </div>
+      </aside>
+
+      <div class="w-full" id="sidespan">
+        <div
+          class="w-full h-20 bg-white flex items-baseline pr-4 pl-4 justify-between"
+        >
+          <div class="relative">
+            <!-- Font Awesome Icon -->
+            <i
+              class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400"
+            ></i>
+
+            <!-- Input -->
+            <input
+              type="text"
+              placeholder="Search bookmarks..."
+              class="w-100 pl-10 pr-4 py-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition"
+            />
+          </div>
+
+          <div class="sidecont flex items-baseline gap-4">
+            <button
+              class="addbookmark w-40 rounded-xl h-10 bg-baseGreen-400 text-white"
+            >
+              + Add Bookmark
+            </button>
+
+            <button
+              class="profileicon size-12 pt-4 rounded-2xl hover:cursor-pointer"
+              id="dropdownButton"
+            >
+              <img src="download.jpeg" class="rounded-full" alt="" />
+            </button>
+            <div
+              id="dropdownMenu"
+              class="hidden absolute right-0-0 mt-2 w-60 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10 p-3"
+            >
+              <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                <li class="flex gap-2">
+                  <div class="cont size-12 rounded-full">
+                    <img src="download.jpeg" class="rounded-full" alt="">
+                  </div>
+                  <div class="cont2">
+                    <p id="nameparam">Emily Carter</p>
+                    <p id="mailparam">emilycarter@gmail.com</p>
+                  </div>
+                  
+
+
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >Settings</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
 </html>
