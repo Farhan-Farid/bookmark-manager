@@ -291,38 +291,45 @@
             </button>
 
             <button
-              class="profileicon size-12 pt-4 rounded-2xl hover:cursor-pointer"
+              class="profileicon size-12 pt-4 rounded-full hover:cursor-pointer "
               id="dropdownButton"
             >
-              <img src="download.jpeg" class="rounded-full" alt="" />
+              <img
+                src="download.jpeg"
+                tabindex="0"
+                class="rounded-full"
+                alt=""
+                id="profimg"
+              />
             </button>
             <div
               id="dropdownMenu"
-              class="hidden absolute right-0-0 mt-2 w-60 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10 p-3"
+              class="hidden absolute right-0-0 mt-20 w-60 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-10 p-3"
             >
               <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
                 <li class="flex gap-2">
                   <div class="cont size-12 rounded-full">
-                    <img src="download.jpeg" class="rounded-full" alt="">
+                    <img src="download.jpeg" class="rounded-full" alt="" />
                   </div>
                   <div class="cont2">
-                    <p id="nameparam">Emily Carter</p>
-                    <p id="mailparam">emilycarter@gmail.com</p>
+                    <p id="nameparam" class="font-bold">Emily Carter</p>
+                    <p id="mailparam" style="font-size: 10px">
+                      emilycarter@gmail.com
+                    </p>
                   </div>
-                  
-
-
                 </li>
+                <hr />
                 <li>
                   <a
                     href="#"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >Settings</a
+                    >Theme</a
                   >
                 </li>
+                <hr />
                 <li>
                   <a
-                    href="#"
+                    href="./html-pages/login.html"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >Logout</a
                   >
