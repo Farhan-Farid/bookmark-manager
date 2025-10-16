@@ -27,35 +27,25 @@ document.addEventListener("click", (e) => {
   }
 });
 
+let bookmarks = [];
+
 fetch("./starter-code/data.json")
   .then((res) => res.json())
   .then((data) => {
-    const container = document.getElementById("card-container");
-    const bookmarks = data.bookmarks; // access the bookmarks array
-    function pinBookmark(bookmarkId) {
-      // Find the bookmark by id
-      const bookmark = bookmarks.find((b) => b.id === bookmarkId);
-      if (!bookmark) return;
+    bookmarks = data.bookmarks;
+    bookmarks.sort((a, b) => b.pinned - a.pinned);
+    renderCards(bookmarks);
+  });
 
-      // Update pinned state
-      bookmark.pinned = true;
+function renderCards(items) {
+  const container = document.getElementById("card-container");
+  container.innerHTML = "";
+  items.forEach((item) => {
+    const card = document.createElement("div");
+    card.className =
+      "bg-white rounded-2xl p-4 shadow hover:shadow-lg transition dark:bg-baseGreen-800";
 
-      // Re-sort bookmarks so pinned items are first
-      bookmarks.sort((a, b) => b.pinned - a.pinned); // pinned=true first
-
-      // Re-render cards
-      renderCards();
-    }
-
-    
-
-      bookmarks.forEach((item) => {
-        const card = document.createElement("div");
-
-        card.className =
-          "bg-white rounded-2xl p-4 shadow hover:shadow-lg transition dark:bg-baseGreen-800";
-
-        card.innerHTML = `
+    card.innerHTML = `
         <div class="head flex gap-3 pb-5">
                 <img
                   src="${item.favicon}"
@@ -107,8 +97,60 @@ fetch("./starter-code/data.json")
               </div>
         `;
 
-        container.appendChild(card);
-      });
+    container.appendChild(card);
+  });
+}
+function pinBookmark(bookmarkId) {
+  const bookmark = bookmarks.find(b => b.id === bookmarkId);
+  if (!bookmark) return;
+  bookmark.pinned = !bookmark.pinned; // toggle pin
+  bookmarks.sort((a, b) => (b.pinned - a.pinned));
+  renderCards(bookmarks);
+}
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', e => {
+  const query = e.target.value.toLowerCase();
+
+  const filtered = bookmarks.filter(item =>
+    item.title.toLowerCase().includes(query)
+  );
+
+  renderCards(filtered);
+});
+
+
+
+const lightBtn = document.getElementById('lightBtn');
+  const darkBtn = document.getElementById('darkBtn');
+  const html = document.documentElement;
+
+  // Load theme from localStorage
+  if (localStorage.theme === 'dark') {
+    html.classList.add('dark');
+    toggleDark(true);
+  } else {
+    toggleDark(false);
+  }
+
+  function toggleDark(isDark) {
+    if (isDark) {
+      lightBtn.classList.remove('bg-gray-400', 'text-black');
+      darkBtn.classList.add('bg-white', 'text-black');
+    } else {
+      darkBtn.classList.remove('bg-white', 'text-black');
+      lightBtn.classList.add('bg-gray-400', 'text-black');
     }
-  )
-  .catch((err) => console.error("Error loading JSON:", err));
+  }
+
+  lightBtn.addEventListener('click', () => {
+    html.classList.remove('dark');
+    localStorage.theme = 'light';
+    toggleDark(false);
+  });
+
+  darkBtn.addEventListener('click', () => {
+    html.classList.add('dark');
+    localStorage.theme = 'dark';
+    toggleDark(true);
+  });

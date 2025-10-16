@@ -10,13 +10,13 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="bg-neutrallight-100">
     <div
       class="fullcontainer flex bg-neutrallight-100 dark:bg-baseGreen-900 dark:text-white"
     >
       <!-- Sidebar -->
       <aside
-        class="w-80 min-h-screen bg-white dark:bg-baseGreen-800 border-r border-gray-200 dark:border-gray-700 p-4"
+        class="w-80 min-h-screen bg-white dark:bg-baseGreen-800 border-r border-gray-200 dark:border-gray-700 p-4 fixed overflow-scroll max-h-screen scrollbar-hide"
       >
         <!-- Header -->
         <div class="flex items-center gap-2 mb-6">
@@ -325,7 +325,7 @@
         </div>
       </aside>
 
-      <div class="w-full" id="sidespan">
+      <div class="w-full ml-78" id="sidespan">
         <div
           class="w-full h-20 bg-white flex items-baseline pr-4 pl-4 justify-between dark:bg-baseGreen-800"
         >
@@ -337,6 +337,7 @@
             <input
               type="text"
               placeholder="Search bookmarks..."
+              id="searchInput"
               class="w-100 pl-10 pr-4 py-2 bg-white text-gray-900 dark:text-gray-100 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-baseGreen-500 focus:border-transparent outline-none transition dark:bg-teal-950 dark:focus:ring-gray-200"
             />
           </div>
@@ -380,9 +381,26 @@
                 <li>
                   <a
                     href="#"
-                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >Theme</a
                   >
+                  <div
+                    id="themeToggle"
+                    class="inline-flex bg-gray-200 dark:bg-gray-700 rounded-xl p-1 cursor-pointer w-18 h-7"
+                  >
+                    <button
+                      id="lightBtn"
+                      class="w-1/2 h-4 flex items-center justify-center rounded-lg text-black"
+                    >
+                      <i class="fa-solid fa-sun"></i>
+                    </button>
+                    <button
+                      id="darkBtn"
+                      class="w-1/2 h-4 flex items-center justify-center rounded-lg text-black"
+                    >
+                      <i class="fa-solid fa-moon"></i>
+                    </button>
+                  </div>
                 </li>
                 <hr />
                 <li>
@@ -401,9 +419,7 @@
           <div
             class="cardcontainer w-full h-full p-10 grid grid-cols-3 gap-3"
             id="card-container"
-          >
-            
-          </div>
+          ></div>
         </main>
       </div>
     </div>
