@@ -29,25 +29,16 @@ document.addEventListener("click", (e) => {
 
 let bookmarks = [];
 
-// Load bookmarks (from localStorage if available)
-const storedBookmarks = JSON.parse(localStorage.getItem("bookmarks"));
+fetch("./starter-code/data.json")
+  .then((res) => res.json())
+  .then((data) => {
+    bookmarks = data.bookmarks;
+    const activeBookmarks = bookmarks.filter((item) => !item.isArchived);
 
-if (storedBookmarks && storedBookmarks.length > 0) {
-  bookmarks = storedBookmarks;
-  const activeBookmarks = bookmarks.filter((b) => !b.isArchived);
-  activeBookmarks.sort((a, b) => b.pinned - a.pinned);
-  renderCards(activeBookmarks);
-} else {
-  fetch("./starter-code/data.json")
-    .then((res) => res.json())
-    .then((data) => {
-      bookmarks = data.bookmarks;
-      localStorage.setItem("bookmarks", JSON.stringify(bookmarks)); // save for later
-      const activeBookmarks = bookmarks.filter((b) => !b.isArchived);
-      activeBookmarks.sort((a, b) => b.pinned - a.pinned);
-      renderCards(activeBookmarks);
-    });
-}
+    // Sort and render only active ones
+    activeBookmarks.sort((a, b) => b.pinned - a.pinned);
+    renderCards(activeBookmarks);
+  });
 
 function renderCards(items) {
   const container = document.getElementById("card-container");
@@ -90,9 +81,7 @@ function renderCards(items) {
     <ul class="py-1 text-sm text-gray-700">
       <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Edit</a></li>
       <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Delete</a></li>
-      <li><button data-id="${
-        item.id
-      }" class="archive-btn block px-4 py-2 hover:bg-gray-100" onclick="archiveBookmark()">Archive</button></li>
+      <li><button data-id="${item.id}" class="archive-btn block px-4 py-2 hover:bg-gray-100" onclick="archiveBookmark()">Archive</button></li>
     </ul>
   </div>
 </div>
@@ -107,15 +96,9 @@ function renderCards(items) {
                   ${item.description}
                 </p>
                 <div class="tagscont flex gap-2 pt-2 items-end">
-                  <div class="bg-neutrallight-300 p-1 rounded dark:bg-baseGreen-600">${
-                    item.tags[0]
-                  }</div>
-                  <div class="bg-neutrallight-300 p-1 rounded dark:bg-baseGreen-600">${
-                    item.tags[1]
-                  }</div>
-                  <div class="bg-neutrallight-300 p-1 rounded dark:bg-baseGreen-600">${
-                    item.tags[2]
-                  }</div>
+                  <div class="bg-neutrallight-300 p-1 rounded dark:bg-baseGreen-600">${item.tags[0]}</div>
+                  <div class="bg-neutrallight-300 p-1 rounded dark:bg-baseGreen-600">${item.tags[1]}</div>
+                  <div class="bg-neutrallight-300 p-1 rounded dark:bg-baseGreen-600">${item.tags[2]}</div>
                 </div>
               </div>
               <hr class="text-gray-500"/>
@@ -133,9 +116,7 @@ function renderCards(items) {
                 </div>
                 <button class=" " onclick="pinBookmark('${item.id}')">
                   <i
-                    class="fa-solid fa-thumbtack ${
-                      item.pinned ? "text-red-500" : "text-gray-400"
-                    } text-gray-400 hover:cursor-pointer"
+                    class="fa-solid fa-thumbtack text-gray-400 hover:cursor-pointer"
                   ></i>
                 </button>
               </div>
@@ -144,23 +125,13 @@ function renderCards(items) {
     container.appendChild(card);
   });
 }
-
 function pinBookmark(bookmarkId) {
-  const bookmark = bookmarks.find(b => b.id === bookmarkId);
+  const bookmark = bookmarks.find((b) => b.id === bookmarkId);
   if (!bookmark) return;
-
   bookmark.pinned = !bookmark.pinned; // toggle pin
-
-  // Save to localStorage so it's persistent
-  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-
-  // Re-render active bookmarks so the pin color updates
-  const activeBookmarks = bookmarks.filter(b => !b.isArchived);
-  activeBookmarks.sort((a, b) => b.pinned - a.pinned);
-  renderCards(activeBookmarks);
+  bookmarks.sort((a, b) => b.pinned - a.pinned);
+  renderCards(bookmarks);
 }
-
-
 const searchInput = document.getElementById("searchInput");
 const showcasingnow = document.getElementById("showcasing");
 showcasingnow.innerHTML = "All bookmarks";
@@ -265,15 +236,12 @@ function archiveBookmark(bookmarkId) {
   const item = bookmarks.find((b) => b.id === bookmarkId);
   if (!item) return;
 
-  item.isArchived = true;
+  item.isArchived = true; // or toggle with: !item.isArchived
 
-  // Save permanently
+  // Save updated data to localStorage if needed
   localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
 
-  // Show only active ones
-  const activeBookmarks = bookmarks
-    .filter((b) => !b.isArchived)
-    .sort((a, b) => b.pinned - a.pinned);
-
+  // Re-render only unarchived bookmarks
+  const activeBookmarks = bookmarks.filter((b) => !b.isArchived);
   renderCards(activeBookmarks);
 }
